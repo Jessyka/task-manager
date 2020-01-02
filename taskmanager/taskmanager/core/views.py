@@ -5,4 +5,4 @@ from django.http import HttpResponse
 
 
 def home(request):
-    return HttpResponse('Ola mundo.')
+    return render(request, 'home.html', {'usuario' : 'Jessyka', 'tasks' : []})
