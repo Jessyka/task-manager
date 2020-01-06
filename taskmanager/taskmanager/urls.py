@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from taskmanager.core.views import home
+from taskmanager.core.views import new_task
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home),
+    path('newtask/', new_task),
 ]
