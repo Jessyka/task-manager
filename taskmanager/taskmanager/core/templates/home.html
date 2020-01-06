@@ -35,9 +35,13 @@
 						        <tr>
 						            <td> {{task.pk}} </td>
 						            <td> {{task.description}} </td>
-						            <td> {{task.status}} </td>
-						            <td> {{task.date_created}} </td>
-						        	<td><a class="btn btn-danger" href="/removetask?id={{task.get_id}}"> Deletar </a></td>
+									<td> {{task.date_created|date:"M d, Y"}} </td>
+									{% if task.status == 'done' %}
+										<td> Concluído </td>
+									{% else %}
+										<td> <a class="btn btn-primary" href="/setstatus/{{task.pk}}"> Concluir tarefa </a> </td>
+									{% endif %}
+						        	<td><a class="btn btn-danger" href="/remove/{{task.pk}}"> Deletar </a></td>
                                 </tr>  
                                 {% endfor %}
 						</tbody>

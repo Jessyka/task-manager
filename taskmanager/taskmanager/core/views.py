@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from datetime import date
 from taskmanager.tasks.models import Task
@@ -31,3 +31,14 @@ def new_task(request):
         'message': message
         }
     return render(request, template_name, context)
+
+def remove_task(request, pk):
+    task= get_object_or_404(Task, pk=pk)    
+    task.delete()
+    return redirect('/home/')
+
+def edit_task(request, pk):
+    task= get_object_or_404(Task, pk=pk)    
+    task.status = 'done'
+    task.save()
+    return redirect('/home/')

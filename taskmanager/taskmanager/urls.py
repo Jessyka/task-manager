@@ -17,9 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from taskmanager.core.views import home
 from taskmanager.core.views import new_task
+from taskmanager.core.views import remove_task
+from taskmanager.core.views import edit_task
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('home/', home),
     path('newtask/', new_task),
+    path('remove/<int:pk>', remove_task),
+    path('setstatus/<int:pk>', edit_task),
+    path('admin/', admin.site.urls),
 ]
